@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import {log} from "util";
+import { Component } from '@angular/core';
+// import {log} from "util";
 
 @Component({
   selector: 'app-cars',
   templateUrl: './cars.component.html',
   styleUrls: ['./cars.component.css']
 })
-export class CarsComponent implements OnInit {
+export class CarsComponent {
   // One Way Binding changingInComponent ==>> changingInTemplate
   // canAddCar = false;
   //
@@ -53,27 +53,47 @@ export class CarsComponent implements OnInit {
   First input as early filling text after press "Enter"
   */
   // inputText = "default"
-  onKeyUp(event) {
-    this.inputText = event.target.value;
-  }
+  // onKeyUp(event) {
+  //   this.inputText = event.target.value;
+  // }
 
   // ngIf else
   carName = '';
+  carYear = '2018';
   addCarStatus = false;
 
   // ngFor
-  cars = ['Ford', 'Audi', 'Tesla', 'BMW', 'KIA'];
-  items = [{id: 3, name: 'Bob 1'}, {id: 2, name: 'Bob 2'}, {id: 1, name: 'Bob 3'}]
+  // cars = ['Ford', 'Audi', 'Tesla', 'BMW', 'KIA'];
+  // items = [{id: 3, name: 'Bob 1'}, {id: 2, name: 'Bob 2'}, {id: 1, name: 'Bob 3'}]
 
-  addCar() {
-    this.addCarStatus = true;
-    this.cars.push(this.carName);
-    this.carName = '';
-  }
-  setBigCarText(car: string) {
-    return (car.length > 4) ? true : false;
-  }
-  ngOnInit() {
-  }
+  // addCar() {
+  //   this.addCarStatus = true;
+  //   this.cars.push(this.carName);
+  //   this.carName = '';
+  // }
+  //
+  // setBigCarText(car: string) {
+  //   return (car.length > 4) ? true : false;
+  // }
+
+  // cars: [{name: string, year: number}] = [{
+  //     name: 'Ford',
+  //     year: 2018
+  // }, {
+  //     name: 'KIA',
+  //     year: 2017
+  // }, {
+  //     name: 'Tesla',
+  //     year: 2019
+  // }];
+
+  // addCarInfo() {
+  //   this.cars.push({
+  //     name: this.carName,
+  //     year: this.carYear
+  //   });
+  //   this.carName = '';
+  //   this.carYear = '2018';
+  // }
 
 }

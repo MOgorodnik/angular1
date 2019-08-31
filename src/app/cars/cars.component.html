@@ -1,0 +1,94 @@
+<hr>
+<h2>Cars works!</h2>
+
+<input class="form-control d-block" type="text" [(ngModel)]="carName">
+<input class="form-control d-block" type="text" [(ngModel)]="carYear">
+<button class="btn btn-warning mb-3" (click)="addCarInfo()">Add car info</button>
+
+<app-add-car *ngFor="let car of cars"></app-add-car>
+
+<!-- First One Way Binding changingInComponent ==>> changingInTemplate  -->
+<!--<button disabled class="btn btn-warning">Add car</button>-->
+<!--<button [disabled] = "!canAddCar" class="btn btn-warning">Add car</button>-->
+
+<!-- Second One Way Binding  changingInTemplate ==>> changingInComponent -->
+<button class="btn btn-warning mb-3" (click)="addCar()">Add car</button>
+
+<!-- Ex. ==>> enable disabled button-->
+<!--<p>{{addCarStatus}}</p>-->
+
+<!-- Ex. ==>> ngIf else -->
+<!--<p *ngIf="!addCarStatus">Car not added.</p>-->
+<!--<p *ngIf="addCarStatus">Car added.</p>-->
+
+<!-- Ex. ==>> ngIf else -->
+<p *ngIf="!addCarStatus; else successStatus">Car not added.</p>
+<ng-template #successStatus><p>Car added.</p></ng-template>
+
+<!--Ex. ==>> ngFor  -->
+
+<hr>
+<ul class="list-group">
+	<!--<li class="list-group-item bg-info">-->
+		<app-car *ngFor="let car of cars"></app-car>
+	<!--</li>-->
+	<!--<li class="list-group-item bg-info">-->
+		<!--<app-car></app-car>-->
+	<!--</li>-->
+</ul>
+
+<hr>
+
+<ul>
+	<li *ngFor="let item of items; let i = index">
+		<div [ngStyle]="{'color': !((i+1)%2) ? 'red': 'green', 'backgroundColor': 'lightgrey' }">
+			<b>index {{i+1}}</b> - <i>{{item.name}}</i>
+			<br>
+			<b>id {{item.id}}</b> - <i>{{item.name}}</i>
+		</div>
+	</li>
+</ul>
+
+<hr>
+
+<ul>
+	<li *ngFor="let car of cars; let i = index">
+		<div [ngClass] = "{'bg-warning': setBigCarText(car)}">
+			<b>index {{i+1}}</b> - <i>{{car}}</i>
+		</div>
+	</li>
+</ul>
+
+<hr>
+<h2>One &amp; Two Way Binding</h2>
+<!-- 1 -->
+<!--<input class="form-control d-block" type="text" (keyup)="onKeyUp($event)">-->
+<!-- vs -->
+<!--<input class="form-control d-block" type="text" (input)="onKeyUp($event)">-->
+
+<!-- 2 -->
+<!--<input class="form-control d-block" type="text" #myInp (input)="onKeyUp(myInp.value)">-->
+
+<!-- 3 -->
+<!--<input class="form-control d-block" type="text" (keyup)="onKeyUp($event)">-->
+
+<!-- 4 -->
+<!--<input class="form-control d-block" type="text" (keyup.enter)="onKeyUp($event)">-->
+
+<!-- general -->
+<!--<p>{{ inputText }}</p>-->
+
+<hr>
+
+<!-- Two Way Binding  changingInTemplate << == >> changingInComponent -->
+<!-- 1 -->
+<input class="form-control d-block mb-2" type="text" (keyup.enter)="onKeyUp($event)">
+<input class="form-control d-block" type="text" [(ngModel)]="inputText">
+<!--
+Can't bind to 'ngModel' since it isn't a known property of 'input"
+So we needed import { FormsModule } from '@angular/forms';
+-->
+
+<!-- general -->
+<p>{{ inputText }}</p>
+
